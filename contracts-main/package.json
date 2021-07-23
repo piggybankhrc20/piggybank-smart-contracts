@@ -1,0 +1,35 @@
+{
+  "name": "Lottery",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "testrpc": "ganache-cli --gasLimit 13000000 -e 100000 --networkId 666",
+    "migrate": "truffle migrate --network testnet --reset",
+    "compile": "truffle compile --network testnet",
+    "test": "rm -rf contracts/flattened/*.sol && truffle test",
+    "flatten": "truffle-flattener contracts/COINKToken.sol > flatten-contracts/COINKToken.sol && truffle-flattener contracts/COINKReferral.sol > flatten-contracts/COINKReferral.sol && truffle-flattener contracts/COINKMasterChef.sol > flatten-contracts/COINKMasterChef.sol && truffle-flattener contracts/COINKMasterChefV2.sol > flatten-contracts/COINKMasterChefV2.sol && truffle-flattener contracts/COINKLottery.sol > flatten-contracts/COINKLottery.sol && truffle-flattener contracts/Timelock.sol > flatten-contracts/Timelock.sol && truffle-flattener contracts/Multicall.sol > flatten-contracts/Multicall.sol && truffle-flattener contracts/SmartChef.sol > flatten-contracts/SmartChef.sol && node flatten_fix.js",
+    "flatten-owner": "truffle-flattener contracts/PiggybankoneFactory.sol > flatten-contracts/PiggybankoneFactory.sol && truffle-flattener contracts/PiggybankoneRouter.sol > flatten-contracts/PiggybankoneRouter.sol && truffle-flattener contracts/PiggybankoneProfile.sol > flatten-contracts/PiggybankoneProfile.sol && truffle-flattener contracts/PiggybankonePair.sol > flatten-contracts/PiggybankonePair.sol && node flatten_fix.js"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^3.2.0",
+    "@openzeppelin/test-helpers": "^0.5.6",
+    "@saladswap/salad-swap-lib": "0.0.1",
+    "@uniswap/v2-core": "^1.0.1",
+    "@uniswap/v2-periphery": "^1.1.0-beta.0",
+    "truffle": "^5.1.41"
+  },
+  "devDependencies": {
+    "@nomiclabs/buidler": "^1.4.7",
+    "@nomiclabs/buidler-ethers": "^2.0.0",
+    "@nomiclabs/buidler-truffle5": "^1.3.4",
+    "@nomiclabs/buidler-waffle": "^2.0.0",
+    "@nomiclabs/buidler-web3": "^1.3.4",
+    "chai": "^4.2.0",
+    "ethereum-waffle": "^3.0.0",
+    "ethers": "^5.0.14",
+    "truffle-flattener": "^1.4.4",
+    "truffle-hdwallet-provider": "^1.0.17",
+    "truffle-plugin-verify": "^0.5.0",
+    "web3": "^1.3.0"
+  }
+}
